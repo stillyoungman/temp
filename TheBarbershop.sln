@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheBarbershop.Api", "TheBar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheBarbershop.Core", "TheBarbershop.Core\TheBarbershop.Core.csproj", "{0E02B181-D89A-4E35-B48D-EB0BBC5A768C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheBarbershop.Persistance", "TheBarbershop.Persistance\TheBarbershop.Persistance.csproj", "{6E54D1A0-ABDC-4886-A5DF-92323403E710}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheBarbershop.Persistence", "TheBarbershop.Persistence\TheBarbershop.Persistence.csproj", "{C7892D4C-8093-40BF-89B8-D466F79E6195}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{0E02B181-D89A-4E35-B48D-EB0BBC5A768C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E02B181-D89A-4E35-B48D-EB0BBC5A768C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E02B181-D89A-4E35-B48D-EB0BBC5A768C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6E54D1A0-ABDC-4886-A5DF-92323403E710}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E54D1A0-ABDC-4886-A5DF-92323403E710}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E54D1A0-ABDC-4886-A5DF-92323403E710}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E54D1A0-ABDC-4886-A5DF-92323403E710}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7892D4C-8093-40BF-89B8-D466F79E6195}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7892D4C-8093-40BF-89B8-D466F79E6195}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7892D4C-8093-40BF-89B8-D466F79E6195}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7892D4C-8093-40BF-89B8-D466F79E6195}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
