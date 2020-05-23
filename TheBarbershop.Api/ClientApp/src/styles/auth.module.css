@@ -1,0 +1,33 @@
+.form {
+    width: 100%;
+    min-width: 300px;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+input {
+    margin-top: 10px;
+}
+
+.btn {
+    border-radius: 15px;
+    margin: 20px 0;
+}
+
+.top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    overflow: hidden;
+    height: 110px;
+}
+
+.signup-btn {
+    width: fit-content;
+    margin: 30px 50px;
+    float: right;
+}

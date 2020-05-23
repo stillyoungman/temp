@@ -1,0 +1,12 @@
+textarea {
+    outline: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: Helvetica, Verdana, sans-serif;
+    resize: none;
+    overflow: auto;
+    width: 80%;
+    margin: auto;
+    height: 40%;
+  }
+
