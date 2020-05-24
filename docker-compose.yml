@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  db:
+    image: mysql/mysql-server:8.0.17
+    environment:
+      MYSQL_ROOT_PASSWORD: "e573gQURrALSfhNL"
+      MYSQL_ROOT_HOST: "%"
+    restart: always
+    ports:
+      - "0.0.0.0:3306:3306"
+
+  barbershop:
+    depends_on:
+      - db
+    build:
+      context: .
+    ports:
+      - "0.0.0.0:8080:80"

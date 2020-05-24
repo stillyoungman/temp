@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import UserListItem from './UserListItem'
 
-export class Users extends Component {
+export default class Users extends Component {
   static displayName = "Пользователи";
 
   render() {

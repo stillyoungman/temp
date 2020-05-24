@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
-import { Users } from './components/Users';
+import Users from './components/Users';
 import PostEditor from './components/PostEditor';
 import Posts from './components/Posts';
+import Services from './components/Services'
 import { usersPath, postsPath, servicesPath, postEditorPath } from './constants';
 import { withRouter } from 'react-router';
 import { Switch, Redirect } from "react-router-dom"
@@ -20,7 +21,7 @@ class App extends Component {
         <Switch>
           <Route exact path={usersPath} component={Users} />
           <Route path={postsPath} component={Posts} />
-          <Route path={servicesPath} component={() => <></>} />
+          <Route path={servicesPath} component={Services} />
           <Route path={postEditorPath} component={PostEditor} />
           <Redirect path="/" to={usersPath} />
         </Switch>

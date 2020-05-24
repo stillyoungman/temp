@@ -4,10 +4,13 @@ using System.Text;
 
 namespace TheBarbershop.Core.Models
 {
-    public class Post: Entity
+    public class Post : Entity
     {
         public string Title { get; set; }
         public string Text { get; set; }
         public DateTime CreatedAt { get; set; }
+
+        public long AuthorId { get; set; }
+        public Administrator Author { get; set; }
     }
 }

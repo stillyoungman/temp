@@ -6,8 +6,9 @@ namespace TheBarbershop.Core.Enums
 {
     public enum Role
     {
-        Administrator,
-        Master,
-        Client
+        Undefinded = 0,
+        Admin = 1,
+        Master = 2,
+        Client = 3 
     }
 }

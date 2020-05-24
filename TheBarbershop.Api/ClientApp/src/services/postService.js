@@ -24,5 +24,9 @@ export default {
     createPost(post) {
         post.id = index++;
         return this.updatePost(post);
+    },
+    deletePost(id){
+        delete posts[id]
+        return new Promise((resolve, reject) => resolve())
     }
 }

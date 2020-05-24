@@ -23,9 +23,7 @@ class Posts extends Component {
       this.setState({
         ...this.state,
         posts: p
-        //posts: p.reduce((result, post) => ({ ...result, [post.id]: post }), {}) 
-      },
-        () => console.log(this.state.posts))
+      })
     })
   }
 
@@ -43,8 +41,15 @@ class Posts extends Component {
   deletePost = (title, id) => {
     const approved = window.confirm(`Вы дейтвительно хотите удалить пост '${title}'?`);
     if (approved) {
-      //call api
-      //filter source
+      console.log(id)
+      postService.deletePost(id).then(() => {
+        postService.getPosts().then(p => {
+          this.setState({
+            ...this.state,
+            posts: p
+          })
+        })
+      })
     }
   }
 
@@ -78,7 +83,7 @@ class Posts extends Component {
           <tbody>
             {
               this.state.posts &&
-              Object.values(this.state.posts).map(p => <PostListItem
+              Object.values(this.state.posts).filter(o => o).map(p => <PostListItem
                 key={p.id}
                 onSelect={() => this.showModal(p.title, p.text)}
                 onDelete={() => this.deletePost(p.title, p.id)}

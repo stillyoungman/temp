@@ -23,6 +23,16 @@ class PostEditor extends React.Component {
         this.history.onSaveEditCallback = undefined;
     }
 
+    handleSave = () => {
+        if(!this.state.title){
+            alert("Пустой заголовок недопустим.")
+        } else if(!this.state.text){
+            alert("Пост должен содержать текст.")
+        } else {
+            this.history.onSaveEditCallback(this.state.id, this.state.title, this.state.text)
+        }
+    }
+
     render() {
         return <>
             <input
@@ -40,9 +50,9 @@ class PostEditor extends React.Component {
             <textarea
                 onChange={({ target }) => this.setState({ ...this.state, text: target.value })}
                 value={this.state.text}
-                placeholder={"Текст..."} />
+                placeholder="Текст..." />
             <br />
-            <button style={{ margin: "5px 0px" }} onClick={() => this.history.onSaveEditCallback(this.state.id, this.state.title, this.state.text)} className="btn btn-success">Сохранить</button>
+            <button style={{ margin: "5px 0px" }} onClick={this.handleSave} className="btn btn-success">Сохранить</button>
             <button style={{ margin: "5px 10px" }} onClick={() => this.history.goBack()} className="btn btn-secondary">Отменить</button>
         </>
     }
