@@ -16,10 +16,6 @@
 		<ProjectReference Include="..\TheBarbershop.Core\TheBarbershop.Core.csproj" />
 	</ItemGroup>
 
-  <ItemGroup>
-    <Content Include="..\appsettings.Development.json" Link="appsettings.Development.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
+
 
 </Project>
