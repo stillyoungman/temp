@@ -9,6 +9,7 @@ namespace TheBarbershop.Core.Models
     {
         public string PasswordHash { get; set; }
         public Role Role { get; set; }
+        public bool IsBlocked { get; set; }
     }
 
 }

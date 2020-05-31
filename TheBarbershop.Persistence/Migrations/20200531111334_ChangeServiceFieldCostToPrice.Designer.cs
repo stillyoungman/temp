@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TheBarbershop.Persistence;
 
 namespace TheBarbershop.Persistence.Migrations
 {
     [DbContext(typeof(BarbershopContext))]
-    partial class BarbershopContextModelSnapshot : ModelSnapshot
+    [Migration("20200531111334_ChangeServiceFieldCostToPrice")]
+    partial class ChangeServiceFieldCostToPrice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,9 +24,6 @@ namespace TheBarbershop.Persistence.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
-
-                    b.Property<bool>("IsBlocked")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Login")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -84,9 +83,6 @@ namespace TheBarbershop.Persistence.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<bool>("IsBlocked")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<string>("MiddleName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -113,13 +109,7 @@ namespace TheBarbershop.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    b.Property<string>("FirstName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<bool>("IsBlocked")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("MiddleName")
+                    b.Property<string>("FullName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("PasswordHash")
@@ -130,9 +120,6 @@ namespace TheBarbershop.Persistence.Migrations
 
                     b.Property<int>("Role")
                         .HasColumnType("int");
-
-                    b.Property<string>("SecondName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 

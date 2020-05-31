@@ -45,5 +45,7 @@ namespace TheBarbershop.Persistence
         {
             return Update(entity).Entity;
         }
+
+        void IDataContext.Remove<TEntity>(TEntity entity) => Remove<TEntity>(entity);
     }
 }

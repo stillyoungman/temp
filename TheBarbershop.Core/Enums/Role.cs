@@ -9,6 +9,6 @@ namespace TheBarbershop.Core.Enums
         Undefinded = 0,
         Admin = 1,
         Master = 2,
-        Client = 3 
+        Client = 3
     }
 }

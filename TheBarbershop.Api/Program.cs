@@ -19,15 +19,20 @@ namespace TheBarbershop.Api
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration(builder =>
-                {
-                    builder.AddJsonFile(Path.Combine(Directory.GetCurrentDirectory(), "..", "appsettings.Docker.json"), true);
-                    builder.AddJsonFile(Path.Combine("appsettings.Docker.json"), true);
-                    builder.AddJsonFile(Path.Combine(Directory.GetCurrentDirectory(), "..", "appsettings.Development.json"), true);
-                })
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+                    .ConfigureAppConfiguration(builder =>
+                    {
+                        builder.AddJsonFile(Path.Combine(Directory.GetCurrentDirectory(), "..", "appsettings.Docker.json"), true);
+                        builder.AddJsonFile(Path.Combine("appsettings.Docker.json"), true);
+                        builder.AddJsonFile(Path.Combine(Directory.GetCurrentDirectory(), "..", "appsettings.Development.json"), true);
+                    })
+                    .ConfigureLogging(logging =>
+                    {
+                        logging.ClearProviders();
+                        logging.AddConsole();
+                    })
+                    .ConfigureWebHostDefaults(webBuilder =>
+                    {
+                        webBuilder.UseStartup<Startup>();
+                    });
     }
 }

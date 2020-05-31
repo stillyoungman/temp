@@ -4,18 +4,10 @@ using System.Text;
 
 namespace TheBarbershop.Core.Models
 {
-    public class Service: Entity
+    public partial class Service: Entity
     {
         public string Name { get; set; }
-        public double Cost { get; set; }
+        public double Price { get; set; }
         public ServiceSex Sex { get; set; }
-
-        public enum ServiceSex
-        {
-            Undefined = 0,
-            Female = 1,
-            Male = 2,
-            Any = 3
-        }
     }
 }

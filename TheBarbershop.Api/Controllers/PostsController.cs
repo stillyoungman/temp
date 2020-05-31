@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -6,12 +7,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using TheBarbershop.Api.Models.Containers;
 using TheBarbershop.Api.Services;
+using TheBarbershop.Core.Infrastructure;
 
 namespace TheBarbershop.Api.Controllers
 {
     [Route("api/[controller]")]
-    public class PostsController: ControllerBase
+    public class PostsController : AppBaseController
     {
+
+        public PostsController(IDataContext c, IMapper m) : base(c, m) { }
+
         [Authorize]
         [HttpGet]
         public IEnumerable<PostDto> Get()

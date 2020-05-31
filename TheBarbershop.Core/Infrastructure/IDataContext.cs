@@ -16,6 +16,7 @@ namespace TheBarbershop.Core.Infrastructure
         IEnumerable<TEntity> AddRange<TEntity>(IEnumerable<TEntity> entities) where TEntity : class;
         TEntity Update<TEntity>(TEntity entity) where TEntity : class;
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
-
+        void Remove<TEntity>(TEntity entit) where TEntity: class;
+        void RemoveRange(IEnumerable<object> entities);
     }
 }

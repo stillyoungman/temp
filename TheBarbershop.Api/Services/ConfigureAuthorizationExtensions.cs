@@ -1,13 +1,18 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using TheBarbershop.Api.Models;
+using TheBarbershop.Api.Utils;
+using TheBarbershop.Core.Infrastructure;
 using TheBarbershop.Core.Models;
 
 namespace TheBarbershop.Api.Services
@@ -16,7 +21,9 @@ namespace TheBarbershop.Api.Services
     {
         public static IServiceCollection ConfigureAuthorization(this IServiceCollection services)
         {
-            string secret = services.BuildServiceProvider().GetRequiredService<IOptions<ApplicationConfiguration>>().Value.TokenSecret; 
+            var serviceProvider = services.BuildServiceProvider();
+            var logger = serviceProvider.GetRequiredService<ILogger<Startup>>();
+            string secret = serviceProvider.GetRequiredService<IOptions<ApplicationConfiguration>>().Value.TokenSecret;
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
@@ -32,13 +39,14 @@ namespace TheBarbershop.Api.Services
                 };
                 options.Events = new JwtBearerEvents
                 {
-                    OnAuthenticationFailed = (context) =>
-                    {
-
-                        return Task.CompletedTask;
-                    }, 
                     OnTokenValidated = (context) =>
                     {
+                        var userId = long.Parse(context.Principal.FindFirst(ClaimTypes.NameIdentifier).Value);
+                        var userRole = context.Principal.FindFirst(ClaimTypes.Role).Value;
+                        var dataContext = context.HttpContext.RequestServices.GetRequiredService<IDataContext>();
+                        if (!DoesUserExist(userId, userRole, dataContext)) {
+                            context.Fail("User doesn't exist.");
+                        }
                         return Task.CompletedTask;
                     }
                 };
@@ -52,6 +60,17 @@ namespace TheBarbershop.Api.Services
             });
 
             return services;
+        }
+
+        private static bool DoesUserExist(long id, string role, IDataContext context)
+        {
+            switch (role)
+            {
+                case Policies.Admin: return context.Set<Administrator>().Any(a => a.Id == id);
+                case Policies.Client: return context.Set<Client>().Any(c => c.Id == id);
+                case Policies.Master: return context.Set<Master>().Any(c => c.Id == id);
+                default: throw new NotSupportedException($"Role {role} isn't supported.");
+            }
         }
     }
 }

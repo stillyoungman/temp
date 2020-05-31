@@ -21,6 +21,7 @@ namespace TheBarbershop.Core.Models
 
         public enum State
         {
+            Undefined = 0,
             Pending = 1,
             Approved,
             Done,
